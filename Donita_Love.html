@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donitaaaaa I love you ❤️</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+        body {
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            margin: 0;
+            background: linear-gradient(to right, #ff758c, #ff7eb3);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        .container {
+            max-width: 500px;
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+            position: relative;
+            text-align: center;
+            animation: fadeIn 1s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        h2 {
+            color: #ff3e6c;
+            font-size: 30px;
+        }
+        p {
+            font-size: 22px;
+            color: #333;
+        }
+        .btn {
+            padding: 12px 25px;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+            margin: 10px;
+            border-radius: 25px;
+            transition: 0.3s;
+        }
+        .yes-btn {
+            background-color: #28a745;
+            color: white;
+        }
+        .yes-btn:hover {
+            background-color: #218838;
+        }
+        .no-btn {
+            background-color: #dc3545;
+            color: white;
+            position: absolute;
+            transition: 0.2s;
+        }
+        .no-btn:hover {
+            transform: scale(0.8);
+        }
+        .celebration {
+            display: none;
+            font-size: 30px;
+            color: #ff3e6c;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        .confetti {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        .heart {
+            position: absolute;
+            bottom: 0;
+            font-size: 25px;
+            color: red;
+            animation: float 4s linear infinite;
+        }
+        @keyframes float {
+            from { transform: translateY(0); opacity: 1; }
+            to { transform: translateY(-100vh); opacity: 0; }
+        }
+    </style>
+    <script>
+        function forgiveMe() {
+            document.getElementById("celebration").style.display = "block";
+            createConfetti();
+            showGIF();
+        }
+
+        function moveButton() {
+            let noBtn = document.getElementById("noBtn");
+            let x = Math.random() * (window.innerWidth - 100);
+            let y = Math.random() * (window.innerHeight - 50);
+            noBtn.style.left = `${x}px`;
+            noBtn.style.top = `${y}px`;
+        }
+
+        function createConfetti() {
+            const confettiContainer = document.createElement("div");
+            confettiContainer.classList.add("confetti");
+            document.body.appendChild(confettiContainer);
+            for (let i = 0; i < 100; i++) {
+                let confetti = document.createElement("div");
+                confetti.style.position = "absolute";
+                confetti.style.width = "10px";
+                confetti.style.height = "10px";
+                confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+                confetti.style.left = `${Math.random() * 100}%`;
+                confetti.style.top = "-10px";
+                confetti.style.animation = `fall ${Math.random() * 3 + 2}s linear infinite`;
+                confettiContainer.appendChild(confetti);
+            }
+        }
+
+        function showGIF() {
+            let gif = document.createElement("img");
+            gif.src = "https://media.giphy.com/media/l2QDM9Jnim1YVILXa/giphy.gif"; // Tight hug GIF
+            gif.style.width = "200px";
+            gif.style.marginTop = "20px";
+            document.querySelector(".container").appendChild(gif);
+        }
+
+        function createHearts() {
+            setInterval(() => {
+                let heart = document.createElement("div");
+                heart.classList.add("heart");
+                heart.style.left = `${Math.random() * 100}vw`;
+                heart.innerText = "❤️";
+                document.body.appendChild(heart);
+                setTimeout(() => heart.remove(), 4000);
+            }, 500);
+        }
+
+        document.addEventListener("DOMContentLoaded", createHearts);
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h2>Donitaaaaa I love you! ❤️</h2>
+        <p>Will you kiss me? 😘</p>
+        <button class="btn yes-btn" onclick="forgiveMe()">Yes</button>
+        <button class="btn no-btn" id="noBtn" onmouseover="moveButton()">No</button>
+        <div class="celebration" id="celebration">🎉 Gawar! 🎉</div>
+    </div>
+</body>
+</html>
